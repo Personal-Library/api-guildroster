@@ -1,3 +1,5 @@
+// General queries only
+
 const pool = require('../db');
 
 const testDBConnection = async () => {

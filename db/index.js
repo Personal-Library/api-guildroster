@@ -1,3 +1,4 @@
+// Database connection and configuration
 const { Pool } = require('pg');
 
 const pool = new Pool({
