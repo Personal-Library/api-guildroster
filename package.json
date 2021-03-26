@@ -4,7 +4,8 @@
   "description": "API for a website that maintains the current roster for a guild.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "migrate": "node-pg-migrate"
   },
   "keywords": [],
   "author": "",
