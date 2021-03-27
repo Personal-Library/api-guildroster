@@ -26,7 +26,40 @@ Install dependencies
 
 ## Usage
 
-App is currently in development.
+This API supports basic CRUD operations for handling roster changes.
+
+1. Get all members
+
+Send a GET request to `https://api-guildroster.herokuapp.com/members`
+
+2. Get one member
+
+Send a GET request to `https://api-guildroster.herokuapp.com/members/:id`
+
+3. Create a member
+
+Send a POST request to `https://api-guildroster.herokuapp.com/members`
+
+4. Update a member
+
+Send a PUT request to `https://api-guildroster.herokuapp.com/members/:id`
+
+5. Delete a member
+
+Send a DELETE request to `https://api-guildroster.herokuapp.com/members/:id`
+
+**IMPORTANT**
+
+For the POST and PUT endpoints, valid parameters must be supplied on the request body. Example below:
+
+```
+{
+  "username": "",
+  "rank": "",
+  "classname": "",
+  "race": ""
+}
+```
 
 ## Contributing
 

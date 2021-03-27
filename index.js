@@ -16,16 +16,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
-app.use('/members', membersRouter)
+app.use('/members', membersRouter);
 
 // BASE ROUTES
 app.get('/', (req, res) => {
-	res.send({ msg: 'Hello World' });
+	res.send({ msg: 'Why hello there.' });
 });
 
 app.get('/test', async (req, res) => {
-	const responseFromDB = await testDBConnection();
-	res.send(responseFromDB);
+	try {
+		const responseFromDB = await testDBConnection();
+		res.status(418);
+		res.send({ msg: 'If you see the result of 2+2, then everything is groovy!', responseFromDB });
+	} catch (error) {
+		res.status(400);
+		res.send({ msg: 'There has been an error, likely with your connection params.' });
+		console.error(error);
+	}
 });
 
 // SERVER BEGINS LISTENING
