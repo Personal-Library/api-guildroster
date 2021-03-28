@@ -1,4 +1,4 @@
-const app = require('../');
+const app = require('..');
 const supertest = require('supertest');
 const pool = require('../db');
 
