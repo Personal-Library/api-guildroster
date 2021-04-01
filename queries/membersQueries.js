@@ -1,8 +1,9 @@
 /**
- * 'members' is pluralized to match table name, any queries on the members
- * table will go below
+ * 'members' is pluralized to match table name, any
+ * queries on the members table will go below
  */
-const pool = require('../db');
+
+const pool = require('../db/pool');
 
 const find = async () => {
 	const { rows } = await pool.query('SELECT * FROM members;');
@@ -19,7 +20,7 @@ const insert = async (username, rank, race, classname) => {
 	const {
 		rows,
 	} = await pool.query(
-		'INSERT INTO members (username, rank, race, class) VALUES ($1, $2, $3, $4) RETURNING *;',
+		'INSERT INTO members (username, rank, race, classname) VALUES ($1, $2, $3, $4) RETURNING *;',
 		[username, rank, race, classname]
 	);
 	return rows;
@@ -34,7 +35,7 @@ const findByIdAndUpdate = async (username, rank, race, classname, id) => {
 	const {
 		rows,
 	} = await pool.query(
-		'UPDATE members SET username = $1, rank = $2, race = $3, class = $4 WHERE id = $5 RETURNING *;',
+		'UPDATE members SET username = $1, rank = $2, race = $3, classname = $4 WHERE id = $5 RETURNING *;',
 		[username, rank, race, classname, id]
 	);
 	return rows;

@@ -9,7 +9,7 @@ exports.up = (pgm) => {
       username VARCHAR(25) NOT NULL,
       rank VARCHAR(25) NOT NULL,
       race VARCHAR(25) NOT NULL,
-      class VARCHAR(25) NOT NULL,
+      classname VARCHAR(25) NOT NULL,
       joined TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
   `);

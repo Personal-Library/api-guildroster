@@ -55,8 +55,8 @@ For the POST and PUT endpoints, valid parameters must be supplied on the request
 ```
 {
   "username": "TestUser",
-  "rank": "Peon",
   "classname": "Priest",
+  "rank": "Peon",
   "race": "Orc"
 }
 ```
