@@ -18,6 +18,8 @@
     "joi": "^17.4.0",
     "node-pg-migrate": "^5.9.0",
     "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.5.1",
     "pg-format": "^1.0.4"
   },
