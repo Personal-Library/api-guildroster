@@ -9,6 +9,7 @@ const session = require('express-session');
 const membersRouter = require('./routes/members');
 const authRouter = require('./routes/auth');
 const requireAuth = require('./middlewares/requireAuth');
+const errorHandler = require('./middlewares/errorHandler');
 const corsOptions = {
 	origin: 'http://localhost:3001',
 	methods: 'GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS',
@@ -19,7 +20,6 @@ const corsOptions = {
 
 // SETUP
 const app = express();
-
 
 // MIDDLEWARES
 app.use(cors(corsOptions));
@@ -53,5 +53,7 @@ app.get('/', (req, res) => {
 app.get('/hello', requireAuth, (req, res) => {
 	res.send({ msg: 'If you see this, you should be authorized' });
 });
+
+
 
 module.exports = app;
