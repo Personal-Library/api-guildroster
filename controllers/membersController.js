@@ -20,7 +20,6 @@ const schema = Joi.object({
 		'Monk',
 		'Paladin',
 		'Priest',
-		'Priest',
 		'Rogue',
 		'Shaman',
 		'Warlock',

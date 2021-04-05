@@ -24,41 +24,92 @@ Install dependencies
 
 `npm install`
 
+Setup your local env, follow the .env.example
+
+`touch .env`
+
 ## Usage
 
-This API supports basic CRUD operations for handling roster changes.
+This API supports basic CRUD operations for handling roster changes as well as authentication
+for protecting the delete and edit routes.
 
-1. Get all members
+- Rank is restricted to the following (case-sensitive): Officer, Member, Peon
+- Classnames are restricted to the following (case-sensitive): Death Knight, Demon Hunter, Druid,
+  Hunter, Mage, Monk, Paladin, Priest, Rogue, Shaman, Warlock, Warrior
+- Race is restricted to the following (case-sensitive): Human, Dwarf, Night Elf, Gnome, Draenei,
+  Worgen, Pandaren
 
-Send a GET request to `https://api-guildroster.herokuapp.com/members`
+### Get all members
 
-2. Get one member
+- Send a GET request to `https://api-guildroster.herokuapp.com/members`
 
-Send a GET request to `https://api-guildroster.herokuapp.com/members/:id`
+### Get one member
 
-3. Create a member
+- Send a GET request to `https://api-guildroster.herokuapp.com/members/:id`
 
-Send a POST request to `https://api-guildroster.herokuapp.com/members`
+### Create a member
 
-4. Update a member
-
-Send a PUT request to `https://api-guildroster.herokuapp.com/members/:id`
-
-5. Delete a member
-
-Send a DELETE request to `https://api-guildroster.herokuapp.com/members/:id`
-
-**IMPORTANT**
-
-For the POST and PUT endpoints, valid parameters must be supplied on the request body. Example below:
+- Send a POST request to `https://api-guildroster.herokuapp.com/members`
 
 ```
+// Example request body
 {
-  "username": "TestUser",
-  "classname": "Priest",
+  "username": "Fred",
+  "classname": "Warlock",
   "rank": "Peon",
-  "race": "Orc"
+  "race": "Human"
 }
+```
+
+### Update a member
+
+- Send a PUT request to `https://api-guildroster.herokuapp.com/members/:id`
+
+```
+// Example request body
+{
+  "username": "Fred",
+  "classname": "Warlock",
+  "rank": "Officer",
+  "race": "Human"
+}
+```
+
+### Delete a member
+
+- Send a DELETE request to `https://api-guildroster.herokuapp.com/members/:id`
+
+## Authentication
+
+Authentication is available at the following routes
+
+- A username must be 6-30 characters long, and can include numbers, uppercase and lowercase letters
+- A password must be 6-20 characters long, and can include uppercase and lowercase letters,
+  numbers, and the following special characters: !@#$%^&\*
+
+### Create an Account
+
+- Send a POST request to `https://api-guildroster.herokuapp.com/auth/jwt/signup`
+
+```
+// Example request body
+{
+  "username": "test",
+  "password": "test"
+}
+```
+
+### Login a User
+
+- Send a POST request to `https://api-guildroster.herokuapp.com/auth/jwt/login`
+
+```
+// Example request body
+{
+"username": "test",
+"password": "test"
+}
+
 ```
 
 ## Contributing
