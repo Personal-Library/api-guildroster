@@ -5,8 +5,8 @@ const requireAuth = require('../middlewares/requireAuth');
 const bcrypt = require('bcrypt');
 const router = express.Router();
 const Joi = require('joi');
-const { default: db } = require('node-pg-migrate/dist/db');
 const { generateToken } = require('../auth/jwt');
+const checkUser = require('../middlewares/checkUser');
 
 /**
  * PASSPORT-LOCAL ROUTES
@@ -67,8 +67,17 @@ router.post('/jwt/signup', (req, res, next) => {
 });
 
 // Login with token
-router.post('/jwt/login', (req, res) => {
-	res.send({ msg: 'login route' });
+router.post('/jwt/login', async (req, res) => {
+	const { username, password } = req.body;
+	const dbResponse = await findUserByName(username);
+	const match = await bcrypt.compare(password, dbResponse.password);
+	console.log('Results of bcrypt.compare', match);
+	if (dbResponse.username && match) {
+		const token = generateToken({ username });
+		res.status(200).json({ username: username, token: token });
+	} else {
+		res.status(400).send({ msg: 'Incorrect password.' });
+	}
 });
 
 // Get current user from token
