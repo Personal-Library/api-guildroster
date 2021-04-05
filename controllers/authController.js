@@ -45,9 +45,12 @@ const postLogin = async (req, res) => {
 	username = username.toLowerCase();
 	const dbResponse = await findUserByName(username);
 
+	// If no user was found, dbResponse is 'undefined'
 	if (typeof dbResponse !== 'object') {
 		return res.status(400).send({ msg: 'Username was not found.' });
 	}
+
+	// If password does not match the stored password, passwordsMatch is falsy
 	const passwordsMatch = await bcrypt.compare(password, dbResponse.password);
 	if (dbResponse.username && passwordsMatch) {
 		const token = generateToken({ username });

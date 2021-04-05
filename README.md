@@ -2,7 +2,7 @@
 
 ## Description
 
-This API stores the backend for a guild roster application, which is a project that allows officers to maintain an up to date roster that contains useful information about guild members.
+This API stores the backend for a guild roster application, which is a project that allows users to maintain an up to date roster that contains useful information about guild members.
 
 ## Technologies
 
@@ -24,7 +24,7 @@ Install dependencies
 
 `npm install`
 
-Setup your local env, follow the .env.example
+Setup and populate your .env by following .env.example
 
 `touch .env`
 
