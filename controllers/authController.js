@@ -56,7 +56,12 @@ const postLogin = async (req, res) => {
 	}
 };
 
+const testAuthStatus = (req, res) => {
+	res.send({ msg: "If you see this you are signed in."})
+}
+
 module.exports = {
 	postSignupUser,
 	postLogin,
+	testAuthStatus
 };
