@@ -1,6 +1,9 @@
 const request = require('supertest');
-const app = require('..');
 const pool = require('../db/pool');
+const app = require('..');
+
+// Store for state
+let state = {};
 
 beforeAll(async () => {
 	await pool.connect({
@@ -22,9 +25,6 @@ beforeAll(async () => {
 afterAll(() => {
 	pool.close();
 });
-
-// Store for state
-let state = {};
 
 // Just to make sure the universe is right and Jest is working...
 test('2 + 2 should equal 4', () => {

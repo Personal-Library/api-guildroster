@@ -1,12 +1,16 @@
 const request = require('supertest');
-const app = require('..');
 const pool = require('../db/pool');
+const app = require('..');
 
 /**
- * Don't need a complicated CONTEXT setup, just connect to the
- * TESTING DATABASE and do the database setup here!
- * Check bottom for more notes.
+ * We are able to make a create a user on the users table because the beforeAll
+ * within the authRoutes.test.js file has already created it. We just define some
+ * local state at the top of the file here with the bearer token for this new
+ * user in order to access authorized routes.
  */
+
+const testData = { username: 'Testuser1', password: 'Testpass1' };
+let state = {};
 
 beforeAll(async () => {
 	await pool.connect({
@@ -17,15 +21,20 @@ beforeAll(async () => {
 	});
 	await pool.query('DROP TABLE members;');
 	await pool.query(`
-	CREATE TABLE members (
-		id SERIAL PRIMARY KEY,
-		username VARCHAR(25) NOT NULL,
-		rank VARCHAR(25) NOT NULL,
-		race VARCHAR(25) NOT NULL,
-		classname VARCHAR(25) NOT NULL,
-		joined TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-	);
+		CREATE TABLE members (
+			id SERIAL PRIMARY KEY,
+			username VARCHAR(25) NOT NULL,
+			rank VARCHAR(25) NOT NULL,
+			race VARCHAR(25) NOT NULL,
+			classname VARCHAR(25) NOT NULL,
+			joined TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+		);
 	`);
+	await request(app)
+		.post('/auth/jwt/signup')
+		.send(testData)
+		.expect(200)
+		.then((res) => (state = res.body));
 });
 
 afterAll(() => {
@@ -98,6 +107,7 @@ test('PUT /members/1 endpoint', async () => {
 
 	await request(app)
 		.put('/members/1')
+		.set('Authorization', `Bearer ${state.token}`)
 		.send(testData)
 		.expect(200)
 		.then((res) => {
@@ -115,6 +125,7 @@ test('PUT /members/1 endpoint', async () => {
 test('DELETE /members/1 endpoint', async () => {
 	await request(app)
 		.delete('/members/1')
+		.set('Authorization', `Bearer ${state.token}`)
 		.expect(200)
 		.then((res) => {
 			expect(res.ok).toBeTruthy();
