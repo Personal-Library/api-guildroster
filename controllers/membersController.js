@@ -9,7 +9,7 @@ const {
 
 const schema = Joi.object({
 	username: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
-	rank: Joi.string().valid('Officer', 'Member, Peon'),
+	rank: Joi.string().valid('Officer', 'Member', 'Peon'),
 	race: Joi.string().valid('Human', 'Dwarf', 'Night Elf', 'Gnome', 'Draenei', 'Worgen', 'Pandaren'),
 	classname: Joi.string().valid(
 		'Death Knight',

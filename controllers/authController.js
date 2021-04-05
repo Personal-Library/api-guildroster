@@ -41,7 +41,8 @@ const postSignupUser = (req, res) => {
 };
 
 const postLogin = async (req, res) => {
-	const { username, password } = req.body;
+	let { username, password } = req.body;
+	username = username.toLowerCase();
 	const dbResponse = await findUserByName(username);
 
 	if (typeof dbResponse !== 'object') {
@@ -57,11 +58,11 @@ const postLogin = async (req, res) => {
 };
 
 const testAuthStatus = (req, res) => {
-	res.send({ msg: "If you see this you are signed in."})
-}
+	res.send({ success: true, msg: 'If you see this you are signed in.' });
+};
 
 module.exports = {
 	postSignupUser,
 	postLogin,
-	testAuthStatus
+	testAuthStatus,
 };

@@ -15,7 +15,7 @@ beforeAll(async () => {
 			rejectUnauthorized: false,
 		},
 	});
-	await pool.query('DROP TABLE members');
+	await pool.query('DROP TABLE members;');
 	await pool.query(`
 	CREATE TABLE members (
 		id SERIAL PRIMARY KEY,
@@ -40,9 +40,9 @@ test('2 + 2 should equal 4', () => {
 test('POST /members endpoint', async () => {
 	const testData = {
 		username: 'Test',
-		classname: 'Test',
-		rank: 'Test',
-		race: 'Test',
+		classname: 'Priest',
+		rank: 'Member',
+		race: 'Night Elf',
 	};
 
 	await request(app)
@@ -90,10 +90,10 @@ test('GET /members/1 endpoint', async () => {
 
 test('PUT /members/1 endpoint', async () => {
 	const testData = {
-		username: 'TestPUT',
-		classname: 'TestPUT',
-		rank: 'TestPUT',
-		race: 'TestPUT',
+		username: 'Test',
+		classname: 'Warrior',
+		rank: 'Officer',
+		race: 'Human',
 	};
 
 	await request(app)
@@ -102,11 +102,11 @@ test('PUT /members/1 endpoint', async () => {
 		.expect(200)
 		.then((res) => {
 			let data = res.body.data[0];
-			expect(data.id).toBeDefined();
-			expect(data.username).toBeDefined();
-			expect(data.rank).toBeDefined();
-			expect(data.race).toBeDefined();
-			expect(data.classname).toBeDefined();
+			expect(data.id).toBe(1);
+			expect(data.username).toBe('Test');
+			expect(data.rank).toBe('Officer');
+			expect(data.race).toBe('Human');
+			expect(data.classname).toBe('Warrior');
 			expect(data.joined).toBeDefined();
 			// console.log('From PUT test', data);
 		});

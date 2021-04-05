@@ -83,7 +83,8 @@ for protecting the delete and edit routes.
 
 Authentication is available at the following routes
 
-- A username must be 6-30 characters long, and can include numbers, uppercase and lowercase letters
+- A username must be 6-30 characters long, and can include numbers, uppercase and lowercase letters.
+  The username will be lowercased upon storage, and must be unique.
 - A password must be 6-20 characters long, and can include uppercase and lowercase letters,
   numbers, and the following special characters: !@#$%^&\*
 
