@@ -7,12 +7,25 @@ const {
 	findByIdAndUpdate,
 } = require('../queries/membersQueries');
 
-// Ended up defining schema here because it would not validate otherwise...
 const schema = Joi.object({
-	username: Joi.string().alphanum().min(3).max(25).trim().required(),
-	rank: Joi.string().alphanum().min(3).max(25).trim().required(),
-	race: Joi.string().alphanum().min(3).max(25).trim().required(),
-	classname: Joi.string().alphanum().min(3).max(25).trim().required(),
+	username: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
+	rank: Joi.string().valid('Officer', 'Member, Peon'),
+	race: Joi.string().valid('Human', 'Dwarf', 'Night Elf', 'Gnome', 'Draenei', 'Worgen', 'Pandaren'),
+	classname: Joi.string().valid(
+		'Death Knight',
+		'Demon Hunter',
+		'Druid',
+		'Hunter',
+		'Mage',
+		'Monk',
+		'Paladin',
+		'Priest',
+		'Priest',
+		'Rogue',
+		'Shaman',
+		'Warlock',
+		'Warrior'
+	),
 });
 
 const getAllMembers = async (req, res) => {
@@ -65,7 +78,7 @@ const deleteMember = async (req, res) => {
 		const data = await findByIdAndDelete(id);
 		res.send({ msg: 'Member successfully deleted.', data });
 	} catch (error) {
-		res.send({ msg: 'That was probably an invalid id.' });
+		res.send({ msg: 'That was an invalid id.' });
 		console.error(error);
 	}
 };
@@ -85,7 +98,7 @@ const putMember = async (req, res) => {
 			const data = await findByIdAndUpdate(username, rank, race, classname, id);
 			res.send({ msg: 'Member successfully updated.', data });
 		} catch (error) {
-			res.send({ msg: 'That was probably an invalid id.' });
+			res.send({ msg: 'That was an invalid id.' });
 			console.error(error);
 		}
 	}

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const requireAuth = (req, res, next) => {
 	let token = req.headers['authorization'];
-	if (!token) return next();
+	if (!token) return res.status(401).send({ msg: 'Please sign in' });
 
 	// Take out the Bearer tag added on in the client
 	token = token.replace('Bearer ', '');
@@ -11,7 +11,7 @@ const requireAuth = (req, res, next) => {
 		if (err) {
 			return res.status(401).json({
 				success: false,
-				message: 'Please visit the login page.',
+				msg: 'Please sign in',
 			});
 		} else {
 			// user variable { username: 'test', ait: 123123123, exp: 123123123 }

@@ -12,7 +12,7 @@ const saveUser = async (username, hashedPassword) => {
 		return rows[0];
 	} catch (error) {
 		console.log(error.detail); // type 'string'
-		return error.detail
+		return error.detail;
 	}
 };
 
@@ -26,17 +26,8 @@ const findUserById = async (userId, cb) => {
 	return rows[0];
 };
 
-const findPassword = async (username, password, cb) => {
-	const { rows } = await pool.query('SELECT * FROM users WHERE username = $1 AND password = $2;', [
-		username,
-		password,
-	]);
-	return rows[0];
-};
-
 module.exports = {
 	findUserByName,
 	findUserById,
-	findPassword,
 	saveUser,
 };
