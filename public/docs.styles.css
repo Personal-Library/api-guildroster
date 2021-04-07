@@ -1,0 +1,26 @@
+/********************
+GLOBAL DEFAULTS
+********************/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--gray-100: #f3f4f6;
+	--gray-200: #e5e7eb;
+	--gray-400: #9ca3af;
+	--gray-900: #111827;
+	--green-400: #34d399;
+	--green-700: #047857;
+}
+
+body {
+	background-color: var(--gray-100);
+	color: var(--gray-900);
+	max-width: 1440px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.2rem;
+}

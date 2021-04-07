@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // FILE IMPORTS
 const membersRouter = require('./routes/members');
@@ -19,12 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 // ROUTES
 app.use('/members', membersRouter);
 app.use('/auth', authRouter);
+app.use(express.static('public'));
 
-// BASE ROUTES
-app.get('/', (req, res) => {
-	res.send({ msg: 'Hello world!' });
+app.get('/docs', (req, res) => {
+	res.sendFile(path.join(__dirname, '/public', 'docs.html'));
 });
 
+// ERROR CATCH-ALL
 app.use(errorHandler);
 
 module.exports = app;
