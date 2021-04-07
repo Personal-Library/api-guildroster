@@ -8,19 +8,154 @@ GLOBAL DEFAULTS
 	box-sizing: border-box;
 }
 
-:root {
-	--gray-100: #f3f4f6;
-	--gray-200: #e5e7eb;
-	--gray-400: #9ca3af;
-	--gray-900: #111827;
-	--green-400: #34d399;
+html {
+	--font-base: #111827;
+	--bg-base: #f3f4f6;
+	--link-base: #34d399;
+	--green-700: #047857;
+}
+
+html[data-theme='dark'] {
+	--font-base: #f3f4f6;
+	--bg-base: #111827;
+	--link-base: #34d399;
 	--green-700: #047857;
 }
 
 body {
-	background-color: var(--gray-100);
-	color: var(--gray-900);
-	max-width: 1440px;
+	background-color: var(--bg-base);
+	color: var(--font-base);
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2rem;
+}
+
+/********************
+NAVIGATION BAR 
+********************/
+
+.nav-wrapper {
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper:hover {
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+}
+
+nav {
+	max-width: 1440px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+}
+
+nav > img {
+	max-height: 40px;
+	cursor: pointer;
+}
+
+nav > div {
+	display: flex;
+	align-items: center;
+	list-style: none;
+}
+
+nav > div > a {
+	font-size: 1.3rem;
+	margin-left: 20px;
+	border-bottom: 4px solid var(--link-base);
+	text-decoration: none;
+	color: var(--font-base);
+	cursor: pointer;
+}
+
+nav > div > a:visited {
+	color: var(--font-base);
+}
+
+nav > div > a:hover {
+	border-bottom: 4px solid var(--green-700);
+}
+
+.dark-btn {
+	margin-left: 20px;
+	border: 2px solid var(--link-base);
+	padding: 10px 20px;
+	background-color: var(--bg-base);
+	color: var(--font-base);
+	border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+	nav > img {
+		max-height: 30px;
+	}
+	nav > div > a {
+		font-size: 1.1rem;
+	}
+	.dark-btn {
+		padding: 5px 10px;
+	}
+}
+
+/********************
+INFO SECTION 
+********************/
+
+section {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px 16px 100px 16px;
+	max-width: 800px;
+}
+
+h2 {
+	margin-top: 20px;
+}
+
+p {
+	margin-top: 20px;
+	margin-left: 20px;
+	line-height: 26px;
+}
+
+ul {
+	margin-top: 20px;
+	margin-left: 40px;
+	line-height: 32px;
+}
+
+hr {
+	margin-top: 20px;
+}
+
+pre {
+	overflow-x: scroll;
+}
+
+code {
+	font-size: 16px;
+	line-height: 32px;
+	max-width: 100%;
+	overflow-x: scroll;
+}
+
+@media (max-width: 768px) {
+	code {
+		font-size: 12px;
+		line-height: 24px;
+	}
+	p {
+		margin-left: 0;
+	}
+}
+
+/********************
+NIGHT MODE SPECIFICS
+********************/
+
+.transition {
+	transition: all 500ms;
 }

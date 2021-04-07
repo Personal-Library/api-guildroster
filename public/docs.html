@@ -14,7 +14,136 @@
 		<title>Guildroster API</title>
 	</head>
 	<body>
-		<h1>Test</h1>
-		<img src="./sauropod-192.png" alt="sauropod" />
+		<div class="nav-wrapper">
+			<nav>
+				<img src="sauropod-192.png" alt="Sauropod icon" />
+				<div>
+					<button name="theme" class="dark-btn">Too Bright? 🌑</button>
+					<a href="/">Home</a>
+					<a href="/docs">Docs</a>
+				</div>
+			</nav>
+		</div>
+		<section>
+			<h2>Description</h2>
+			<p>
+				This API stores the backend for a guild roster application, which is a project that allows
+				users to maintain an up to date roster that contains useful information about guild members.
+			</p>
+			<hr />
+			<h2>Technologies</h2>
+			<ul>
+				<li>Express</li>
+				<li>Node.js</li>
+				<li>PostgreSQL</li>
+			</ul>
+			<hr />
+			<h2>Installation</h2>
+			<pre>
+<code>
+  # Clone the repository
+    git clone git@github.com:Personal-Library/api-guildroster.git
+  # Enter the project directory
+    cd api-guildroster
+  # Install dependencies
+    npm install
+  # Setup and populate your .env by following .env.example
+    touch .env
+</code>
+			</pre>
+			<hr />
+			<h2>Usage</h2>
+			<p>
+				This API supports basic CRUD operations for handling roster changes as well as
+				authentication for protecting the delete and edit routes.
+			</p>
+			<ul>
+				<li>Rank is restricted to the following (case-sensitive): Officer, Member, Peon</li>
+				<li>
+					Classnames are restricted to the following (case-sensitive): Death Knight, Demon Hunter,
+					Druid, Hunter, Mage, Monk, Paladin, Priest, Rogue, Shaman, Warlock, Warrior
+				</li>
+				<li>
+					Race is restricted to the following (case-sensitive): Human, Dwarf, Night Elf, Gnome,
+					Draenei, Worgen, Pandaren
+				</li>
+			</ul>
+			<pre>
+<code>
+  # Get all members
+    Send a GET request to https://guildroster.herokuapp.com/members
+  # Get one member
+    Send a GET request to https://guildroster.herokuapp.com/members/:id
+  # Create a member
+    Send a POST request to https://guildroster.herokuapp.com/members
+
+  // Example request body
+  {
+    "username": "Fred",
+    "classname": "Warlock",
+    "rank": "Peon",
+    "race": "Human"
+  }
+
+  # Update a member
+    Send a PUT request to https://guildroster.herokuapp.com/members/:id
+
+  // Example request body
+  {
+    "username": "Fred",
+    "classname": "Warlock",
+    "rank": "Peon",
+    "race": "Human"
+  }
+
+  # Delete a member
+    Send a DELETE request to https://guildroster.herokuapp.com/members/:id
+</code>
+			</pre>
+			<hr />
+			<h2>Authentication</h2>
+			<p>Authentication is available at the following routes</p>
+			<ul>
+				<li>
+					A username must be 6-30 characters long, and can include numbers, uppercase and lowercase
+					letters. The username will be lowercased upon storage, and must be unique.
+				</li>
+				<li>
+					A password must be 6-20 characters long, and can include uppercase and lowercase letters,
+					numbers, and the following special characters: !@#$%^&*
+				</li>
+			</ul>
+			<pre>
+<code>
+  # Create an Account
+    Send a POST request to https://guildroster.herokuapp.com/auth/jwt/signup
+
+  // Example request body
+  {
+    "username": "FredTheWarlock",
+    "password": "FredsPassword",
+  }
+
+  # Login a User
+    Send a POST request to https://guildroster.herokuapp.com/auth/jwt/login
+
+  // Example request body
+  {
+    "username": "FredTheWarlock",
+    "password": "FredsPassword",
+  }
+</code>
+			</pre>
+			<hr />
+			<h2>Contributing</h2>
+			<p>
+				This is a personal project for learning purposes and is not accepting contributions. You are
+				welcome to modify and distribute any versions as you please.
+			</p>
+			<hr />
+			<h2>License</h2>
+			<p>MIT License</p>
+		</section>
+		<script src="scripts.js"></script>
 	</body>
 </html>

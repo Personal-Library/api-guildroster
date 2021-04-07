@@ -41,15 +41,15 @@ for protecting the delete and edit routes.
 
 ### Get all members
 
-- Send a GET request to `https://api-guildroster.herokuapp.com/members`
+- Send a GET request to `https://guildroster.herokuapp.com/members`
 
 ### Get one member
 
-- Send a GET request to `https://api-guildroster.herokuapp.com/members/:id`
+- Send a GET request to `https://guildroster.herokuapp.com/members/:id`
 
 ### Create a member
 
-- Send a POST request to `https://api-guildroster.herokuapp.com/members`
+- Send a POST request to `https://guildroster.herokuapp.com/members`
 
 ```
 // Example request body
@@ -63,7 +63,7 @@ for protecting the delete and edit routes.
 
 ### Update a member
 
-- Send a PUT request to `https://api-guildroster.herokuapp.com/members/:id`
+- Send a PUT request to `https://guildroster.herokuapp.com/members/:id`
 
 ```
 // Example request body
@@ -77,7 +77,7 @@ for protecting the delete and edit routes.
 
 ### Delete a member
 
-- Send a DELETE request to `https://api-guildroster.herokuapp.com/members/:id`
+- Send a DELETE request to `https://guildroster.herokuapp.com/members/:id`
 
 ## Authentication
 
@@ -90,7 +90,7 @@ Authentication is available at the following routes
 
 ### Create an Account
 
-- Send a POST request to `https://api-guildroster.herokuapp.com/auth/jwt/signup`
+- Send a POST request to `https://guildroster.herokuapp.com/auth/jwt/signup`
 
 ```
 // Example request body
@@ -102,7 +102,7 @@ Authentication is available at the following routes
 
 ### Login a User
 
-- Send a POST request to `https://api-guildroster.herokuapp.com/auth/jwt/login`
+- Send a POST request to `https://guildroster.herokuapp.com/auth/jwt/login`
 
 ```
 // Example request body

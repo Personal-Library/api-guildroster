@@ -6,7 +6,6 @@ const path = require('path');
 // FILE IMPORTS
 const membersRouter = require('./routes/members');
 const authRouter = require('./routes/auth');
-// const requireAuth = require('./middlewares/requireAuth');
 const errorHandler = require('./middlewares/errorHandler');
 
 // INSTANTIATE SERVER
