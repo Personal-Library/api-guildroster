@@ -171,8 +171,14 @@ CONTACT SECTION
 }
 
 .contact-container > input {
+	margin-bottom: 20px;
+	padding: 12px 24px;
+}
+
+.contact-container > button {
 	margin-bottom: 40px;
-	padding: 16px 32px;
+	padding: 7px 24px;
+	width: 292px;
 }
 
 /********************
