@@ -95,8 +95,8 @@ Authentication is available at the following routes
 ```
 // Example request body
 {
-  "username": "test",
-  "password": "test"
+  "username": "FredTheWarlock",
+  "password": "warlocksRule123"
 }
 ```
 
@@ -107,8 +107,8 @@ Authentication is available at the following routes
 ```
 // Example request body
 {
-"username": "test",
-"password": "test"
+"username": "FredTheWarlock",
+"password": "WarlocksRule123"
 }
 
 ```

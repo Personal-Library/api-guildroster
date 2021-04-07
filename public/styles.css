@@ -22,7 +22,7 @@ body {
 	background-color: var(--gray-100);
 	color: var(--gray-900);
 	font-family: 'Roboto', sans-serif;
-	font-size: 1.2rem;
+	font-size: clamp(16px, 3vw, 20px);
 }
 
 p {
@@ -64,7 +64,7 @@ nav > div {
 nav > div > a {
 	font-size: 1.3rem;
 	margin-left: 30px;
-	border-bottom: 4px solid var(--gray-100);
+	border-bottom: 4px solid var(--green-400);
 	text-decoration: none;
 	color: var(--gray-900);
 }
@@ -74,7 +74,7 @@ nav > div > a:visited {
 }
 
 nav > div > a:hover {
-	border-bottom: 4px solid var(--green-400);
+	border-bottom: 4px solid var(--green-700);
 	cursor: pointer;
 }
 
@@ -98,12 +98,12 @@ HERO SECTION
 }
 
 .hero-container > div > h1 {
-	font-size: 3rem;
+	font-size: clamp(2rem, 3vw, 3rem);
 	margin-bottom: 16px;
 }
 
 .hero-container > img {
-	max-width: 35%;
+	width: clamp(min(350px, 95%), 40vw, 500px);
 	border-radius: 5px;
 }
 
@@ -118,7 +118,6 @@ HERO SECTION
 	}
 	.hero-container > img {
 		margin-top: 32px;
-		max-width: 90%;
 	}
 }
 
@@ -157,7 +156,7 @@ CONTACT SECTION
 ********************/
 
 .contact-container {
-	background-color: var(--gray-600);
+	background-color: var(--green-700);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
