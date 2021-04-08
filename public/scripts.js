@@ -1,9 +1,7 @@
 (() => {
 	const darkBtn = document.querySelector('.dark-btn');
 	const bodyTag = document.querySelector('body');
-	const state = {
-		darkMode: false,
-	};
+	const state = { darkMode: false };
 
 	const transition = () => {
 		bodyTag.classList.add('transition');
@@ -14,13 +12,11 @@
 
 	darkBtn.addEventListener('click', () => {
 		if (state.darkMode === false) {
-			console.log('if block');
 			transition();
 			document.documentElement.setAttribute('data-theme', 'dark');
 			state.darkMode = true;
 			darkBtn.textContent = 'Too Dark? 🌞';
 		} else {
-			console.log('else block');
 			transition();
 			document.documentElement.setAttribute('data-theme', 'light');
 			state.darkMode = false;
