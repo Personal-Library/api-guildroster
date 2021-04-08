@@ -11,32 +11,38 @@
 			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,700&display=swap"
 			rel="stylesheet"
 		/>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 		<title>Guildroster API</title>
 	</head>
 	<body>
-		<div class="nav-wrapper">
+		<div class="nav-wrapper" data-aos="fade-down">
 			<nav>
-				<img src="sauropod-192.png" alt="Sauropod icon" />
+				<img
+					src="sauropod-192.png"
+					alt="Sauropod icon"
+					data-aos="fade-right"
+					data-aos-delay="150"
+				/>
 				<div>
-					<a href="/">Home</a>
-					<a href="/docs">Docs</a>
+					<a href="/" data-aos="fade-left" data-aos-delay="150">Home</a>
+					<a href="/docs" data-aos="fade-left" data-aos-delay="300">Docs</a>
 				</div>
 			</nav>
 		</div>
 		<div class="hero-wrapper">
 			<section class="hero-container">
-				<div>
+				<div data-aos="fade-right">
 					<h1>Welcome to the Guild Roster API</h1>
 					<p>
 						This homepage will serve as the official source of documentation for topics relating to
 						this service.
 					</p>
 				</div>
-				<img src="goblin.jpg" alt="A photo of a mischevious goblin" />
+				<img src="goblin.jpg" alt="A photo of a mischevious goblin" data-aos="fade-up" />
 			</section>
 		</div>
 		<section class="about-container">
-			<div>
+			<div data-aos="fade-up">
 				<h1>What it is</h1>
 				<p>
 					We created this as a side project in order to create a tool that could help guilds
@@ -46,38 +52,38 @@
 					such as:
 				</p>
 				<ul>
-					<li>Announcements Page</li>
-					<li>Raiding Calendar</li>
-					<li>Social Event Calendar</li>
-					<li>General Forums</li>
-					<li>Member Application Form</li>
-					<li>Guild Highlights</li>
-					<li>And more...</li>
+					<li data-aos="fade-in">Announcements Page</li>
+					<li data-aos="fade-in" data-aos-delay="50">Raiding Calendar</li>
+					<li data-aos="fade-in" data-aos-delay="100">Social Event Calendar</li>
+					<li data-aos="fade-in" data-aos-delay="150">General Forums</li>
+					<li data-aos="fade-in" data-aos-delay="200">Member Application Form</li>
+					<li data-aos="fade-in" data-aos-delay="250">Guild Highlights</li>
+					<li data-aos="fade-in" data-aos-delay="300">And more...</li>
 				</ul>
 			</div>
 		</section>
 		<section class="contact-container">
-			<h3>
+			<h3 data-aos="fade-up">
 				If you are interested in having any of these services established for your guild, send us
 				your email!
 			</h3>
-			<input type="email" placeholder="Enter your email here..." />
-			<button class="email-btn">Submit</button>
+			<input type="email" placeholder="Enter your email here..." data-aos="fade-in" />
+			<button class="email-btn" data-aos="fade-in">Submit</button>
 		</section>
 		<footer>
-			<div>
+			<div data-aos="flip-left">
 				<h3>Anthony B</h3>
 				<a target="_blank" rel="noreferrer" href="https://github.com/anthonybui94"
 					><i class="fab fa-github"></i
 				></a>
 			</div>
-			<div>
+			<div data-aos="flip-left" data-aos-delay="150">
 				<h3>Peter Phan</h3>
 				<a target="_blank" rel="noreferrer" href="https://github.com/peterphan20"
 					><i class="fab fa-github"></i
 				></a>
 			</div>
-			<div>
+			<div data-aos="flip-left" data-aos-delay="300">
 				<h3>Repository</h3>
 				<a
 					target="_blank"
@@ -86,11 +92,15 @@
 					><i class="fab fa-github"></i
 				></a>
 			</div>
-			<div>
+			<div data-aos="flip-left" data-aos-delay="450">
 				<h3>Live Site</h3>
 				<a target="_blank" rel="noreferrer" href="#"><i class="fab fa-github"></i></a>
 			</div>
 		</footer>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init({ duration: 600 });
+		</script>
 		<script src="https://kit.fontawesome.com/2134d26be7.js" crossorigin="anonymous"></script>
 		<script src="index.js"></script>
 	</body>
